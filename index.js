@@ -39,19 +39,19 @@ const saveUserForm = (event) => {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const dob = document.getElementById("dob").value;
-    const acceptTerms = document.getElementById("acceptTerms").checked;
+    const acceptedTermsandConditions = document.getElementById("acceptTerms").checked;
 
     const entry = {
         name,
         email,
         password,
         dob,
-        acceptedTermsAndConditions
+        acceptedTermsandConditions
     };
 
     userEntries.push(entry);
     sessionStorage.setItem("user-entries", JSON.stringify(userEntries));
     displayEntries();
 }
-userform.addEventListener('submit', saveUserForm);
+userform.addEventListener("submit", saveUserForm);
 displayEntries();
