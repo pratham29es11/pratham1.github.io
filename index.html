@@ -86,14 +86,13 @@
             </div>
         </div>
     </div>
-    <script src="./index.js"></script>
     <script>
         const dob = document.getElementById("dob");
-        dob.addEventListener('input', () => validate(dob));
+        dob.addEventListener("input", () => validate(dob));
 
-        function vaidate(executionContext) {
-            var formContext = executionContext.getFormContext();
-            var birthDate = formContext.getAttribute("birthdate").getValue();
+        function vaidate(element) {
+            // var formContext = executionContext.getFormContext();
+            var birthDate = element;
             var today = new Date();
             var validMinDate = new Date(
                 today.getFullYear() - 18,
@@ -105,15 +104,16 @@
                 today.getMonth(),
                 today.getDate(), today.getHours(),
                 today.getMinutes());
-            var birthDateFieldControl = formContext.getControl("birthdate");
-            if (birthDate > validMinDate && birthDate < validMaxDate) {
-                birthDateFieldControl.setNotification("Minimum age must be 18 years!");
+            if (birthDate > validMinDate || birthDate < validMaxDate) {
+                element.setCustomValidity("Minimum age must be 18 years!");
+                element.reportValidity();
             }
             else {
-                birthDateFieldControl.clearNotification("BDATE");
+                element.setCustomValidity("");
             }
         };
     </script>
+    <script src="./index.js"></script>
 </body>
 
 </html>
