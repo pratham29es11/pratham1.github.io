@@ -18,7 +18,7 @@ const displayEntries = () => {
         const emailCell = `<td class="border px-4 py-2">${entry.email}</td>`;
         const passwordCell = `<td class="border px-4 py-2">${entry.password}</td>`;
         const dobCell = `<td class="border px-4 py-2">${entry.dob}</td>`;
-        const acceptTermsCell = `<td class="border px-4 py-2">${entry.acceptTerms}</td>`;
+        const acceptTermsCell = `<td class="border px-4 py-2">${entry.accept}</td>`;
         const row = `<tr>${nameCell} ${emailCell} ${passwordCell} ${dobCell} ${acceptTermsCell}</tr>`;
         return row;
     }).join("\n");
@@ -39,14 +39,16 @@ const saveUserForm = (event) => {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const dob = document.getElementById("dob").value;
-    const acceptedTermsAndConditions = document.getElementById("acceptTerms").checked;
+
+
+    const accept = document.getElementById("acceptTerms").checked;
 
     const entry = {
         name,
         email,
         password,
         dob,
-        acceptedTermsAndConditions
+        accept
     };
 
     userEntries.push(entry);
