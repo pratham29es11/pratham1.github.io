@@ -28,7 +28,7 @@ const displayEntries = () => {
         <th class="border px-4 py-2">Email</th> 
 <th class="border px-4 py-2">Password</th>
             <th class="border">Dob</th> 
-<th class="border px-4 py-2">accepted terms?</th>
+<th class="border px-4 py-2">Accepted terms?</th>
 </tr>${tableEntries}</table>`;
     let details = document.getElementById("user-entries");
     details.innerHTML = table;
@@ -55,3 +55,35 @@ const saveUserForm = (event) => {
 }
 userform.addEventListener("submit", saveUserForm);
 displayEntries();
+
+
+function validate() {
+    var today = new Date();
+
+    var date = new Date(document.getElementById("dob").value);
+    var curr = new Date(
+        date.getFullYear(),
+        date.getMonth(),
+        date.getDate(),
+        date.getHours(),
+        date.getMinutes()
+    );
+    var min = new Date(
+        today.getFullYear() - 18,
+        today.getMonth(),
+        today.getDate(),
+        today.getHours(),
+        today.getMinutes()
+    );
+    var max = new Date(
+        today.getFullYear() - 55,
+        today.getMonth(),
+        today.getDate(),
+        today.getHours(),
+        today.getMinutes()
+    );
+    if (curr > min || curr < max) {
+        alert("minimum age is 18 and maximum age is 55!");
+        return false;
+    }
+}

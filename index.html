@@ -37,7 +37,7 @@
                 </h2>
                 <div class="divide-y divide-gray-300/50">
                     <div class="space-y-6 py-8 text-base leading-7 text-gray-600">
-                        <form id="user-form">
+                        <form id="user-form" onclick="return validate()">
                             <label for="name" class="text-md w-40 inline-block font-medium leading-5 text-gray-700">
                                 Name
                             </label>
@@ -86,33 +86,6 @@
             </div>
         </div>
     </div>
-    <script>
-        const dob = document.getElementById("dob");
-        dob.addEventListener("input", () => validate(dob));
-
-        function vaidate(element) {
-            // var formContext = executionContext.getFormContext();
-            var birthDate = element;
-            var today = new Date();
-            var validMinDate = new Date(
-                today.getFullYear() - 18,
-                today.getMonth(),
-                today.getDate(), today.getHours(),
-                today.getMinutes());
-            var validMaxDate = new Date(
-                today.getFullYear() - 55,
-                today.getMonth(),
-                today.getDate(), today.getHours(),
-                today.getMinutes());
-            if (birthDate > validMinDate || birthDate < validMaxDate) {
-                element.setCustomValidity("Minimum age must be 18 years!");
-                element.reportValidity();
-            }
-            else {
-                element.setCustomValidity("");
-            }
-        };
-    </script>
     <script src="./index.js"></script>
 </body>
 
